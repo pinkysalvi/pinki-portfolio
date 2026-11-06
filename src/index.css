@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Theme colours: light values here, dark overrides below. Use as bg-bg, bg-card, text-muted, border-line... */
+:root {
+  --c-bg: #f5f7fd;
+  --c-bg2: #eef1fa;
+  --c-band: rgba(226, 232, 250, 0.94); /* tinted background for alternate sections */
+  --c-card: #ffffff;
+  --c-line: #d3daee;
+  --c-text: #121a33;
+  --c-muted: #4f5a7a;
+  /* Theme colours: set by the colour picker (src/colors.js). Defaults = Azure. */
+  --c-accent: #5b7cfa;
+  --c-accent2: #9b6bff;
+  --c-accent3: #38d5f5;
+  --c-on-accent: #ffffff;
+  /* highlight colour is darkened in light mode so small text stays readable */
+  --c-cyan: color-mix(in oklab, var(--c-accent3) 58%, #000);
+  --c-ok: #15803d;
+}
+.dark {
+  --c-bg: #070b1a;
+  --c-bg2: #0b1124;
+  --c-band: rgba(13, 21, 48, 0.94);
+  --c-card: #121b38;
+  --c-line: #26325c;
+  --c-text: #e8ecf7;
+  --c-muted: #9aa4c2;
+  --c-cyan: var(--c-accent3);
+  --c-ok: #2ed47a;
+}
+
+@theme {
+  --color-bg: var(--c-bg);
+  --color-bg2: var(--c-bg2);
+  --color-card: var(--c-card);
+  --color-line: var(--c-line);
+  --color-ink: var(--c-text);
+  --color-muted: var(--c-muted);
+  --color-accent: var(--c-accent);
+  --color-accent2: var(--c-accent2);
+  --color-on-accent: var(--c-on-accent);
+  --color-cyan: var(--c-cyan);
+  --color-ok: var(--c-ok);
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-head: "Space Grotesk", "Inter", sans-serif;
+  --animate-spin-slow: spin 12s linear infinite;
+  --animate-spin-rev: spin-rev 12s linear infinite;
+  --animate-blink: blink 1s steps(1) infinite;
+  --animate-spin-slower: spin 120s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-ring: ring 3.5s ease-out infinite;
+
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  @keyframes ring { 0% { transform: scale(.96); opacity: .8; } 100% { transform: scale(1.22); opacity: 0; } }
+
+  @keyframes spin-rev { to { transform: rotate(-360deg); } }
+  @keyframes blink { 50% { opacity: 0; } }
+}
+
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+  /* Thin custom scrollbar in the theme colour (Firefox + Chrome/Edge/Safari) */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, var(--c-accent) 70%, transparent) transparent;
+  }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--c-accent), var(--c-accent2));
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--c-accent); }
+  body {
+    @apply bg-bg text-ink font-sans antialiased overflow-x-hidden transition-colors duration-300;
+  }
+}
+
+@utility card {
+  @apply bg-card border border-line rounded-2xl shadow-[0_10px_40px_rgba(15,25,60,0.12)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.35)];
+}
+@utility wrap {
+  width: min(1180px, 100% - 32px);
+  margin-inline: auto;
+}
+@utility section-pad {
+  @apply pt-20 lg:pt-28;
+}
+/* Full-width tinted band that separates a section from the code background */
+@utility band {
+  background: var(--c-band);
+  border-block: 1px solid var(--c-line);
+  backdrop-filter: blur(6px);
+  @apply mt-20 pb-20 lg:mt-28 lg:pb-28;
+}
+@utility text-grad {
+  @apply bg-gradient-to-r from-accent via-accent2 to-cyan bg-clip-text text-transparent;
+}
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s, transform .7s; }
+.reveal.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}

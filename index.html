@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pinki R. Patel - Frontend Developer</title>
+    <meta name="description" content="Pinki R. Patel, Frontend Developer in Dublin, Ireland. 7+ years building production web apps with React.js, JavaScript and TypeScript." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css" />
+    <script>
+      // theme: the visitor's saved choice, otherwise their device setting (no fixed default)
+      try {
+        var t = localStorage.getItem('pp-theme-choice')
+        var dark = t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches
+        if (dark) document.documentElement.classList.add('dark')
+      } catch (e) {}
+      // apply the saved colour theme before the page paints (no flash of the default colours)
+      try {
+        var c = JSON.parse(localStorage.getItem('pp-colors'))
+        if (c && c.colors) ['--c-accent', '--c-accent2', '--c-accent3'].forEach(function (v, i) { document.documentElement.style.setProperty(v, c.colors[i]) })
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

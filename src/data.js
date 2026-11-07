@@ -15,9 +15,7 @@ export const profile = {
   whatsapp: '919662480514', // +91 96624 80514: country code + number, no "+" or spaces
   linkedin: 'https://www.linkedin.com/in/pinki-patel-97739988/',
   github: 'https://github.com/pinkysalvi',
-  // Put your CV in /public as Pinki-Patel-CV.pdf, or change this path.
-  resume: '/Pinki-Patel-CV.pdf',
-  // Photo lives in /public/photo.jpg. Set to null to show initials instead.
+  resume: '/pinki-cv.pdf',
   photo: '/photo.jpg',
 }
 
@@ -138,6 +136,15 @@ export const experience = [
 // Project images are free photos from Unsplash (unsplash.com/license), saved in /public/projects.
 export const projects = [
   {
+    title: 'AdPulse - Publisher Revenue & Bid Strategy Tracker',
+    badge: 'Dashboard',
+    gradient: 'from-[#0ba360] to-[#3cba92]',
+    desc: 'Interactive performance tracker with Chart.js charts, custom filter panels, collapsible hierarchical tables and data export. Used daily by campaign managers.',
+    stack: ['TypeScript', 'React', 'Chart.js', 'REST APIs'],
+    link: 'https://adpulsepubtracker.netlify.app/',
+    image: '/projects/optomator-photo.jpg',
+  },
+  {
     title: 'Codebook Ecommerce App',
     badge: 'React App',
     gradient: 'from-[#5b7cfa] to-[#9b6bff]',
@@ -155,24 +162,8 @@ export const projects = [
     link: 'https://cinematecards.netlify.app/',
     image: '/projects/movies-photo.jpg',
   },
-  {
-    title: 'AdTech Optomator Dashboard',
-    badge: 'Dashboard',
-    gradient: 'from-[#0ba360] to-[#3cba92]',
-    desc: 'Interactive performance tracker with Chart.js charts, custom filter panels, collapsible hierarchical tables and data export. Used daily by campaign managers.',
-    stack: ['JavaScript', 'Chart.js'],
-    link: 'https://uidemo.hwpub.com/veve_admin/Optomator/index.html',
-    image: '/projects/optomator-photo.jpg',
-  },
-  {
-    title: 'Campaign Console: KPI Mapping & ROAS Targets',
-    badge: 'Internal Tool',
-    gradient: 'from-[#f7971e] to-[#ffd200]',
-    desc: 'Step-by-step wizard for campaign setup tracking budget, ROAS and conversions, plus a side-drawer form to set ROAS targets by Business Unit, Brand, Geo, Goal and Device.',
-    stack: ['React', 'Redux Toolkit', 'Forms'],
-    link: null,
-    image: '/projects/campaign-photo.jpg',
-  },
+  
+  
   {
     title: 'TypeScript & shadcn/ui Design System',
     badge: 'Design System',
